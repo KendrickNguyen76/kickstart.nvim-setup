@@ -231,7 +231,7 @@ vim.keymap.set('v', '<C-c>', '"+y')
 vim.keymap.set({ 'n', 'v' }, '<C-v>', '"+p')
 
 -- File Tree
-vim.keymap.set({ 'n', 'i' }, '<leader>l', function() vim.cmd 'Lex 20' end, { desc = 'Open [L]explorer' })
+vim.keymap.set('n', '<leader>l', function() vim.cmd 'Lex 20' end, { desc = 'Open [L]explorer' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
