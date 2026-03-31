@@ -219,12 +219,30 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
 -- NOTE: Personal Additions to config
+
 -- Tabs and Spacing
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
+
+function TOGGLE_TABS()
+  local current_tab = vim.opt.shiftwidth:get()
+  if current_tab == 2 then
+    vim.opt.tabstop = 4
+    vim.opt.shiftwidth = 4
+    vim.opt.softtabstop = 4
+    print 'Switched to 4-space tabs'
+  else
+    vim.opt.tabstop = 2
+    vim.opt.shiftwidth = 2
+    vim.opt.softtabstop = 2
+    print 'Switched to 2-space tabs'
+  end
+end
+
+vim.keymap.set('n', '<leader><Tab>', ':lua TOGGLE_TABS()<CR>', { noremap = true, silent = true, desc = 'Toggle Tab Spacing' })
 
 -- Copy and Paste (system clipboard)
 vim.keymap.set('v', '<C-c>', '"+y')
