@@ -836,15 +836,25 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'embark-theme/vim',
+
+    -- Lines to add if I want the Embark theme back
+    --'embark-theme/vim',
+    -- vim.cmd.colorscheme 'embark'
+    -- name = 'embark',
+    'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000, -- Make sure to load this before all the other start plugins.
-    name = 'embark',
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
+      require('tokyonight').setup {
+        styles = {
+          comments = { italic = false }, -- Disable italics in comments
+        },
+      }
       vim.opt.termguicolors = true
 
       -- Load the colorscheme here.
-      vim.cmd.colorscheme 'embark'
+      vim.cmd.colorscheme 'tokyonight-storm'
     end,
   },
 
